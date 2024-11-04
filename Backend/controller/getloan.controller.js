@@ -26,7 +26,19 @@ async function GetLoanController(req,res){
         }
         else {
             for(let i=0; i<user.length; i++){
-                if(user[i].paid && user[i].status == "Approved"){
+                if(!user[i].paid && user[i].status == "Approved"){
+                    state = false;
+                    unpaid = user[i];
+                    console.log('test')
+                    return res.status(200).json({
+                    message: "Loan is Runing👍👍",
+                    apply: false,
+                    data : unpaid,
+                    loanhistory : paidloan,
+                    status : "Approved"
+                    })
+                }
+                else if (user[i].paid && user[i].status == "Approved"){
                     state = true;
                     paidloan.push(user[i]);
                 }
@@ -42,7 +54,8 @@ async function GetLoanController(req,res){
                 message: "Loan is Runing👍👍",
                 apply: false,
                 data : unpaid,
-                loanhistory : paidloan
+                loanhistory : paidloan,
+                
             })
         }
         else{

@@ -89,7 +89,7 @@ export default function Home() {
       </form>
 
 
-      <PendingLoanDetails loandetails={loandetails} apply={apply}/>
+      <PendingLoanDetails loandetails={loandetails} apply={apply} userid={userid}/>
 
       <LoanHistory loanHistory={loanHistory}/>
     </div>
