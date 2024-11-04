@@ -8,6 +8,8 @@ const passport = require('./utils/passport-config');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const homeroute = require('./route/home.route');
+const GetAllLoansController = require('./controller/getallloans.controller');
+const ChangeStateController = require('./controller/changestate.controller');
 
 const app = express();
 const PORT = 3000;
@@ -28,6 +30,10 @@ app.use(passport.initialize());
 app.use('/api/auth', authroute);
 
 app.use('/home',homeroute);
+
+app.get('/admin', GetAllLoansController);
+
+app.post('/changestate', ChangeStateController)
 
 // Protected route example
 // app.get("/home", (req, res, next) => {
