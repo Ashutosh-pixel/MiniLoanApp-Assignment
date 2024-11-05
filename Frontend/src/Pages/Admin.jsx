@@ -46,6 +46,8 @@ export default function Admin() {
         <div>
           {allloandetails.map((item) => (
             <div key={item.id}>
+              <span>User ID: {item.id}</span>
+              <span> </span>
               <span>Loan Amount: {item.amount}</span>
               <span> </span>
               <span>Term: {item.term}</span>
